@@ -1,0 +1,34 @@
+.blocos{
+    width: 25px;
+    height: 25px;
+    background-color: brown;
+    margin: 3px;
+}
+.blocosVazio{
+    width: 25px;
+    height: 25px;
+    background-color: rgba(165, 42, 42, 0.219);
+    margin: 3px;
+}
+.inicio{
+    width: 25px;
+    height: 25px;
+    background-color: rgb(14, 163, 1);
+    margin: 3px;
+}
+.fim{
+    width: 25px;
+    height: 25px;
+    background-color: rgb(194, 248, 0);
+    margin: 3px;
+}
+.playing{
+    box-sizing: border-box;
+    border: 2px solid black;
+}
+.line{
+    display: flex;
+}
+.base{
+    background-color: aqua;
+}
