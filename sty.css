@@ -42,7 +42,6 @@ body{
 }
 .base{
     position: relative;
-    height: 80vh;
     width: 60vw;
     margin: 0 auto;
     background-color: aqua;
