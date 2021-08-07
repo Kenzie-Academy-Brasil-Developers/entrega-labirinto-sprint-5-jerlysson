@@ -17,6 +17,7 @@ const map = [
 ];
 const base   = document.querySelector('section');
 base.classList.add('base')
+const winner = document.querySelector('.hidden');
 let parede = document.createElement('div');
 let bloco= document.createElement('div');
 
@@ -43,54 +44,111 @@ for(let i =0; i<map.length; i++){
         cl.appendChild(clBloc)
     }
 }
-let colun = 9
+let colun = 10
 let row = 0
 let blc,clasBlock
+
+blc = base.children[colun].children[row]
+blc.classList.add('playing')
+const removeCls =(elmt1,elmt2) => {
+    base.children[elmt1].children[elmt2].classList.remove('playing');
+}
 
 document.addEventListener('keydown', (e) => {
     
     const keyName = e.key;
-    blc = base.children[colun].children[row]
-    blc.classList.add('playing')
-    clasBlock = blc.className
-    console.log(clasBlock)
-    if(keyName === 'ArrowUp'){
-        if(clasBlock === 'blocoVazio'){
-            colun--;
+
+    if(keyName === 'ArrowRight'){
+        row++;
+        blc = base.children[colun].children[row]
+        clasBlock = blc.className
+        console.log(colun,row,clasBlock)
+        if(clasBlock === 'blocosVazio'){
             blc.classList.add('playing')
-            console.log('inicio+++')
+            setTimeout(function(){
+            base.children[colun].children[row-1].classList.remove('playing')
+            },25)
+        }
+        else if(clasBlock === 'fim'){
+            blc.classList.add('playing')
+            winner.classList.remove('hidden')
+            setTimeout(function(){
+            winner.classList.add('hidden');
+            alert("O jogo Sera Zerado!");
+            colun = 10;
+            row = 0;
+        },1000)
+            setTimeout(function(){
+            base.children[colun].children[row-1].classList.remove('playing');
+            base.children[colun].children[row].classList.remove('playing')
+            },25)
+        }
+        else if(clasBlock === 'blocos'){
+            row--
+            console.log("Bateu na Parede!")
         }else{
-            console.log('movimento invalido')
+            console.log("movimento invalido!")
+        }
+    }
+    else if(keyName === 'ArrowLeft' && row > 0){
+        row--;
+        blc = base.children[colun].children[row]
+        clasBlock = blc.className
+        console.log(colun,row,clasBlock)
+        if(clasBlock === 'blocosVazio'){
+            blc.classList.add('playing')
+            setTimeout(function(){
+            base.children[colun].children[row+1].classList.remove('playing')
+            },25)
+        }else if(clasBlock === 'inicio'){
+            row++;
+            console.log("vc saiu daqui moço, é para o outro lado!")
+        }else if(clasBlock === 'blocos'){
+            row++
+            console.log("Bateu na Parede!")
+        }else{
+            console.log("movimento invalido!")
+        }
+    }
+    else if(keyName === 'ArrowUp'){
+        colun--;
+        blc = base.children[colun].children[row]
+        clasBlock = blc.className
+        console.log(colun,row,clasBlock)
+        if(clasBlock === 'blocosVazio'){
+            blc.classList.add('playing')
+            setTimeout(function(){
+            base.children[colun+1].children[row].classList.remove('playing')
+            },25)
+        }else if(clasBlock === 'blocos'){
+            colun++
+            console.log("Bateu na Parede!")
+        }else{
+            console.log("movimento invalido!")
         }
     }
     else if(keyName === 'ArrowDown'){
-
-        if(clasBlock === 'blocoVazio'){
-            colun++
-            console.log('bloco Vazio!')
+        colun++;
+        blc = base.children[colun].children[row]
+        clasBlock = blc.className
+        console.log(colun,row,clasBlock)
+        if(clasBlock === 'blocosVazio'){
             blc.classList.add('playing')
+            setTimeout(function(){
+            base.children[colun-1].children[row].classList.remove('playing')
+            },25)
+        }else if(clasBlock === 'blocos'){
+            colun--
+
+            console.log("Bateu na Parede!")
         }else{
-            console.log('movimento invalido')
+            console.log("movimento invalido!")
         }
     }
-    else if(keyName === 'ArrowLeft'){
-        if(clasBlock === 'blocoVazio'){
-            row--
-            console.log('bloco Vazio!')
-            blc.classList.add('playing')
-        }else{
-            console.log('movimento invalido')
-        }
-    }else if(keyName === 'ArrowRight'){
-        if(clasBlock === 'blocoVazio'){
-            row++
-            console.log('bloco Vazio!')
-            blc.classList.add('playing')
-        }else{
-            console.log('movimento invalido')
-        }
-    }else{
+    else{
         console.log("tecla invalida")
     }
+
+    console.log(colun,row,clasBlock)
 });
 

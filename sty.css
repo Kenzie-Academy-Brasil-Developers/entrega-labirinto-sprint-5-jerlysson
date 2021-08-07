@@ -1,24 +1,33 @@
+:root{
+    --larg: 25px;
+    --altu: 25px;
+    
+}
+body{
+    font-size: 20px;
+    text-align: center;
+}
 .blocos{
-    width: 25px;
-    height: 25px;
+    width: var(--larg);
+    height: var(--altu);
     background-color: brown;
     margin: 3px;
 }
 .blocosVazio{
-    width: 25px;
-    height: 25px;
+    width: var(--larg);
+    height: var(--altu);
     background-color: rgba(165, 42, 42, 0.219);
     margin: 3px;
 }
 .inicio{
-    width: 25px;
-    height: 25px;
+    width: var(--larg);
+    height: var(--altu);
     background-color: rgb(14, 163, 1);
     margin: 3px;
 }
 .fim{
-    width: 25px;
-    height: 25px;
+    width: var(--larg);
+    height: var(--altu);
     background-color: rgb(194, 248, 0);
     margin: 3px;
 }
@@ -28,7 +37,26 @@
 }
 .line{
     display: flex;
+    width: 100%;
+    justify-content: center;
 }
 .base{
+    position: relative;
+    height: 80vh;
+    width: 60vw;
+    margin: 0 auto;
     background-color: aqua;
+}
+.winner{
+    position: absolute;
+    width: 300px;
+    font-weight: bold;
+    color: green;
+    border: 5px solid greenyellow;
+    background-color: bisque;
+    left: calc(50% - 150px);
+    top: calc(50% - 30px);
+}
+.hidden {
+    display: none;
 }
