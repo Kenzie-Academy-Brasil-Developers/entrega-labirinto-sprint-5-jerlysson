@@ -11,25 +11,25 @@ body{
     width: var(--larg);
     height: var(--altu);
     background-color: brown;
-    margin: 3px;
+    /* margin: 3px; */
 }
 .blocosVazio{
     width: var(--larg);
     height: var(--altu);
     background-color: rgba(165, 42, 42, 0.219);
-    margin: 3px;
+    /* margin: 3px; */
 }
 .inicio{
     width: var(--larg);
     height: var(--altu);
     background-color: rgb(14, 163, 1);
-    margin: 3px;
+    /* margin: 3px; */
 }
 .fim{
     width: var(--larg);
     height: var(--altu);
     background-color: rgb(194, 248, 0);
-    margin: 3px;
+    /* margin: 3px; */
 }
 .playing{
     box-sizing: border-box;
